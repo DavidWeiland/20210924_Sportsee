@@ -3,6 +3,7 @@ import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
 import Card from '../../components/Card'
+import Error from '../../components/Error'
 
 const HomeStyle = styled.div`
 width:100%;
@@ -62,19 +63,32 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 `
-const RechartBar = styled.div`
+const BarChart = styled.div`
 width:100%;
 height:100%;
 radius:5px;
 background-color:#F6F6F6;
 `
-const Recharts = styled.div`
+// start temp =====
+const LineChart = styled.div`
 width:258px;
 height:263px;
 radius:5px;
 background-color:#F6F6F6;
 `
-
+const RadarChart = styled.div`
+width:258px;
+height:263px;
+radius:5px;
+background-color:#F6F6F6;
+`
+const RadialBarChart = styled.div`
+width:258px;
+height:263px;
+radius:5px;
+background-color:#F6F6F6;
+`
+// ===== end temp
 
 function Home() {
   const { data, error, isLoading } = useFetch(`http://localhost:5000/user/12`)
@@ -90,11 +104,7 @@ function Home() {
 
   if (error) {
     return (
-      <HomeStyle>
-        <Title>
-          Error
-        </Title>
-      </HomeStyle>
+      <Error/>
     )
   }
 
@@ -117,12 +127,12 @@ return (
       <Components>
         <ComponentsLeft>
           <ComponentsTop>
-            <RechartBar></RechartBar>
+            <BarChart>BarChart ici</BarChart>
           </ComponentsTop>
           <ComponentsBottom>
-          <Recharts></Recharts>
-          <Recharts></Recharts>
-          <Recharts></Recharts>
+          <LineChart>LineChart ici</LineChart>
+          <RadarChart>RadarChart ici</RadarChart>
+          <RadialBarChart>RadialBarChart ici</RadialBarChart>
           </ComponentsBottom>
         </ComponentsLeft>
         <ComponentsRight>
