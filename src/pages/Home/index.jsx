@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
 import Card from '../../components/Card'
-//import {MAINDATA} from '../../data/MainDataMock.js'
-//import {ACTIVITY} from '../../data/ActivityMock.js'
-//import {AVERAGESESSIONS} from '../../data/AverageSessionsMock.js'
-//import {PERFORMANCE} from '../../data/PerformanceMock.js'
 
 const HomeStyle = styled.div`
 width:100%;
@@ -20,7 +17,7 @@ font-size:48px;
 line-height: 24px;
 `
 
-const TitleFirstname = styled.span`
+const TitleFirstName = styled.span`
 font-size:48px;
 color: ${colors.fontColorRed};
 line-height: 24px;
@@ -80,11 +77,11 @@ background-color:#F6F6F6;
 
 
 function Home() {
-  const { data, error } = useFetch(`http://localhost:5000/user/18`)
-  
-  const userInfos = data.data.userInfos
-  const keyData = data.data.keyData
-  
+  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/12`)
+
+  const userInfos = data.userInfos
+  const keyData = data.keyData
+
   let cle = []
   for (let key in keyData) {
     cle.push(key)
@@ -93,18 +90,26 @@ function Home() {
 
   if (error) {
     return (
-    <HomeStyle>
-      <Title>
-        Erreur
-      </Title>
-    </HomeStyle>
-  )
+      <HomeStyle>
+        <Title>
+          Error
+        </Title>
+      </HomeStyle>
+    )
   }
 
-  return (
-    <HomeStyle>
+  if (isLoading) {
+    return (
+      <HomeStyle>
+        <Loader />
+      </HomeStyle>
+    )
+  }
+
+return (
+  <HomeStyle>
       <Title>
-        Bonjour <TitleFirstname>{userInfos.firstName}</TitleFirstname>
+        Bonjour <TitleFirstName>{userInfos.firstName}</TitleFirstName>
       </Title>
       <SubTitle>
         Félicitation ! Vous avez explosé vos objectifs hier
@@ -121,14 +126,14 @@ function Home() {
           </ComponentsBottom>
         </ComponentsLeft>
         <ComponentsRight>
-      <Card index={cle[0]}
-        value={cle[1]} />
-      <Card index={cle[2]}
-        value={cle[3]} />
-      <Card index={cle[4]}
-        value={cle[5]} />
-      <Card index={cle[6]}
-        value={cle[7]}/>
+          <Card index={cle[0]}
+            value={cle[1]} />
+          <Card index={cle[2]}
+            value={cle[3]} />
+          <Card index={cle[4]}
+            value={cle[5]} />
+          <Card index={cle[6]}
+            value={cle[7]}/>
         </ComponentsRight>
       </Components>
     </HomeStyle>
