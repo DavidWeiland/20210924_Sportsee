@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useFetch } from '../../utils/hooks'
+import Card from '../../components/Card'
+//import {MAINDATA} from '../../data/MainDataMock.js'
+//import {ACTIVITY} from '../../data/ActivityMock.js'
+//import {AVERAGESESSIONS} from '../../data/AverageSessionsMock.js'
+//import {PERFORMANCE} from '../../data/PerformanceMock.js'
 
 const HomeStyle = styled.div`
-background-color:blue;
 width:100%;
 height:933px;
 padding:68px;
@@ -27,7 +31,6 @@ font-size:18px;
 line-height: 24px;
 `
 const Components = styled.div`
-background-color:yellow;
 width:85%;
 height:611px;
 display:flex;
@@ -47,14 +50,12 @@ justify-content:space-between;
 const ComponentsTop = styled.div`
 width:100%;
 height:320px;
-background-color:#FBFBFB;
 `
 const ComponentsBottom = styled.div`
 width:100%;
 height:263px;
 display:flex;
 justify-content:space-between;
-background-color:#FBFBFB;
 `
 
 const ComponentsRight = styled.div`
@@ -63,31 +64,32 @@ height:611px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-background-color:#FBFBFB;
 `
 const RechartBar = styled.div`
 width:100%;
 height:100%;
 radius:5px;
-background-color:red;
+background-color:#F6F6F6;
 `
 const Recharts = styled.div`
 width:258px;
 height:263px;
 radius:5px;
-background-color:red;
-`
-const Card = styled.div`
-width:258px;
-height:124px;
-radius:5px;
-background-color:green;
+background-color:#F6F6F6;
 `
 
+
 function Home() {
-  const { info, error } = useFetch(`http://localhost:5000/user/12`)
-  //const firstName = info.data.userInfos.firstName
-  const firstName = "Moi"
+  const { data, error } = useFetch(`http://localhost:5000/user/18`)
+  
+  const userInfos = data.data.userInfos
+  const keyData = data.data.keyData
+  
+  let cle = []
+  for (let key in keyData) {
+    cle.push(key)
+    cle.push(keyData[key])
+  }
 
   if (error) {
     return (
@@ -102,7 +104,7 @@ function Home() {
   return (
     <HomeStyle>
       <Title>
-        Bonjour <TitleFirstname>{firstName}</TitleFirstname>
+        Bonjour <TitleFirstname>{userInfos.firstName}</TitleFirstname>
       </Title>
       <SubTitle>
         Félicitation ! Vous avez explosé vos objectifs hier
@@ -119,15 +121,17 @@ function Home() {
           </ComponentsBottom>
         </ComponentsLeft>
         <ComponentsRight>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+      <Card index={cle[0]}
+        value={cle[1]} />
+      <Card index={cle[2]}
+        value={cle[3]} />
+      <Card index={cle[4]}
+        value={cle[5]} />
+      <Card index={cle[6]}
+        value={cle[7]}/>
         </ComponentsRight>
       </Components>
     </HomeStyle>
   )
 }
 export default Home
-
-//after subtitle : <Component1 with four components row/> and <Component2 with four components column/>
