@@ -14,6 +14,7 @@ justify-content:space-around;
 align-items:center;
 background-color:#F6F6F6;
 `
+
 const Icon = styled.img`
 width:60px;
 height:60px;
@@ -44,37 +45,30 @@ margin:0;
 `
 
 function Card({ index, value }) {
-  let icon =""
-  let valUnit=""
-  let subTitle=""
-  console.log(index)
+  let icon, valUnit, subTitle
+  
+  (index === "calorieCount") ? (valUnit = "kCal") : (valUnit = "g")
+  
   switch (index) {
     case "calorieCount":
       icon = CaloriesIcon
-      valUnit="kCal"
       subTitle = "Calories"
       break
     case "proteinCount":
-      icon=ProteinIcon
-      valUnit='g'
+      icon = ProteinIcon
       subTitle = 'Protéines'
       break
     case "carbohydrateCount":
-      icon=CarbsIcon
-      valUnit='g'
+      icon = CarbsIcon
       subTitle = 'Glucides'
       break
     case "lipidCount":
-      icon=FatIcon
-      valUnit='g'
+      icon = FatIcon
       subTitle = 'Lipides'
       break
     default:
-      icon = ''
-      valUnit=''
-      subTitle = ''
   }
-console.log({icon})
+
   return (
     <CardContainer>
       <Icon src={icon} alt={`${icon}-icon`}></Icon>
