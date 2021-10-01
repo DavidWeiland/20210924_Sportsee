@@ -4,6 +4,7 @@ import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
 import Card from '../../components/Card'
 import Error from '../../components/Error'
+import LineChartComponent from '../../components/LineChartComponent'
 
 const HomeStyle = styled.div`
 width:100%;
@@ -74,8 +75,9 @@ const LineChart = styled.div`
 width:258px;
 height:263px;
 radius:5px;
-background-color:#F6F6F6;
+background-color:${colors.fontColorRed};
 `
+
 const RadarChart = styled.div`
 width:258px;
 height:263px;
@@ -91,7 +93,7 @@ background-color:#F6F6F6;
 // ===== end temp
 
 function Home() {
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/12`)
+  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/18`)
 
   const userInfos = data.userInfos
   const keyData = data.keyData
@@ -122,7 +124,7 @@ return (
         Bonjour <TitleFirstName>{userInfos.firstName}</TitleFirstName>
       </Title>
       <SubTitle>
-        Félicitation ! Vous avez explosé vos objectifs hier
+      {(data.todayScore >= 0.2) ? "Félicitation ! Vous avez explosé vos objectifs hier 👏" : ""}
       </SubTitle>
       <Components>
         <ComponentsLeft>
@@ -130,7 +132,9 @@ return (
             <BarChart>BarChart ici</BarChart>
           </ComponentsTop>
           <ComponentsBottom>
-          <LineChart>LineChart ici</LineChart>
+            <LineChart>
+              <LineChartComponent/>
+            </LineChart>
           <RadarChart>RadarChart ici</RadarChart>
           <RadialBarChart>RadialBarChart ici</RadialBarChart>
           </ComponentsBottom>
