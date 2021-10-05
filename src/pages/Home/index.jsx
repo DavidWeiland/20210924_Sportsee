@@ -1,156 +1,51 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import { Loader } from '../../utils/style/Atoms'
-import { useFetch } from '../../utils/hooks'
-import Card from '../../components/Card'
-import Error from '../../components/Error'
-import LineChartComponent from '../../components/LineChartComponent'
+import UserIcon from '../../assets/Icons/user-circle.svg'
+import { StyledLink } from '../../utils/style/Atoms'
 
-const HomeStyle = styled.div`
-width:100%;
-height:933px;
-padding:68px;
-padding-left:109px;
-position:relative;
+const Container = styled.div`
+width: 90%;
+height: 933px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
 `
-
+const LinkWrapper = styled.div`
+margin:60px;
+width:80%;
+display:flex;
+flex-direction: column;
+align-items:center;
+padding:20px;
+`
+const Icon = styled.img`
+  width:100%;
+`
 const Title = styled.h1`
-font-size:48px;
+font-weight: 700;
+font-size: 35px;
 line-height: 24px;
+color: ${colors.fontColorDark};
+opacity:0.7;
 `
-
-const TitleFirstName = styled.span`
-font-size:48px;
-color: ${colors.fontColorRed};
-line-height: 24px;
-`
-
-const SubTitle = styled.h2`
-font-size:18px;
-line-height: 24px;
-`
-const Components = styled.div`
-width:85%;
-height:611px;
-display:flex;
-justify-content: space-between;
-position:absolute;
-bottom:68px;
-`
-
-const ComponentsLeft = styled.div`
-width:835px;
-height:611px;
-background-color:#FBFBFB;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-`
-const ComponentsTop = styled.div`
-width:100%;
-height:320px;
-`
-const ComponentsBottom = styled.div`
-width:100%;
-height:263px;
-display:flex;
-justify-content:space-between;
-`
-
-const ComponentsRight = styled.div`
-width:258px;
-height:611px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-`
-const BarChart = styled.div`
-width:100%;
-height:100%;
-radius:5px;
-background-color:#F6F6F6;
-`
-// start temp =====
-const LineChart = styled.div`
-width:258px;
-height:263px;
-radius:5px;
-background-color:${colors.fontColorRed};
-`
-
-const RadarChart = styled.div`
-width:258px;
-height:263px;
-radius:5px;
-background-color:#F6F6F6;
-`
-const RadialBarChart = styled.div`
-width:258px;
-height:263px;
-radius:5px;
-background-color:#F6F6F6;
-`
-// ===== end temp
 
 function Home() {
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/18`)
-
-  const userInfos = data.userInfos
-  const keyData = data.keyData
-
-  let cle = []
-  for (let key in keyData) {
-    cle.push(key)
-    cle.push(keyData[key])
-  }
-
-  if (error) {
-    return (
-      <Error/>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <HomeStyle>
-        <Loader />
-      </HomeStyle>
-    )
-  }
-
-return (
-  <HomeStyle>
-      <Title>
-        Bonjour <TitleFirstName>{userInfos.firstName}</TitleFirstName>
-      </Title>
-      <SubTitle>
-      {(data.todayScore >= 0.2) ? "Félicitation ! Vous avez explosé vos objectifs hier 👏" : ""}
-      </SubTitle>
-      <Components>
-        <ComponentsLeft>
-          <ComponentsTop>
-            <BarChart>BarChart ici</BarChart>
-          </ComponentsTop>
-          <ComponentsBottom>
-            <LineChart>
-              <LineChartComponent/>
-            </LineChart>
-          <RadarChart>RadarChart ici</RadarChart>
-          <RadialBarChart>RadialBarChart ici</RadialBarChart>
-          </ComponentsBottom>
-        </ComponentsLeft>
-        <ComponentsRight>
-          <Card index={cle[0]}
-            value={cle[1]} />
-          <Card index={cle[2]}
-            value={cle[3]} />
-          <Card index={cle[4]}
-            value={cle[5]} />
-          <Card index={cle[6]}
-            value={cle[7]}/>
-        </ComponentsRight>
-      </Components>
-    </HomeStyle>
+  return (
+    <Container>
+        <StyledLink to="/dashboard/12">
+          <LinkWrapper>
+            <Icon src={UserIcon} alt="force-icon"/>
+            <Title>Karl Dovineau</Title>
+          </LinkWrapper>
+        </StyledLink>
+        <StyledLink to="/dashboard/18">
+          <LinkWrapper>
+            <Icon src={UserIcon} alt="force-icon"/>
+            <Title>Cécilia Ratorez</Title>
+          </LinkWrapper>
+        </StyledLink>
+    </Container>
   )
 }
 export default Home
