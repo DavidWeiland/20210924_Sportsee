@@ -1,7 +1,6 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '../../utils/hooks';
-import Error from '../Error'
 import { Loader } from '../../utils/style/Atoms';
 
 const CustomizedAxisTick = ({ x, y, payload }) => {
@@ -30,21 +29,16 @@ const CustomizedAxisTick = ({ x, y, payload }) => {
       text = ''
   }
   return (
-      <text orientation="bottom" width="240" height="30" type="category" x={x} y={y} stroke="none" fill="#FFFFFF" class="recharts-text recharts-cartesian-axis-tick-value" textAnchor="middle">
+      <text orientation="bottom" width="240" height="30" type="category" x={x} y={y} stroke="none" fill="rgba(255, 255, 255, 0.6)" className="recharts-text recharts-cartesian-axis-tick-value" textAnchor="middle">
         <tspan x={x} dy="0.71em">{text}</tspan>
       </text>
   )
 }
 
-const CustomizedToolTip = ({ active, payload, label }) => {
-  //console.log(active, payload, label)
+const CustomizedToolTip = ({ active, payload }) => {
   if (active) {
     return (
-      <div
-        padding = "0.8rem"
-        backgroundColor = "white"
-        borderRadius = {8}
-        boxShadow="3px 3px 3px rgba(0, 0, 0, 0.3)">
+      <div className="custom-tootip">
           <span>{`${payload[0].value} min`}</span>
       </div>
     )
@@ -52,38 +46,47 @@ const CustomizedToolTip = ({ active, payload, label }) => {
   return null
 }
 
-function LineChartComponent() {
+const CustomizedLegend = () => {
+    return (
+      <div>
+          <span>{`Durée moyenne des sessions`}</span>
+      </div>
+    )
+}
 
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/18/average-sessions`)
-  
+function LineChartComponent({userId}) {
+  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/average-sessions`)
   if (error) {
     return (
-      <Error/>
+      <Loader />
     )
   }
 
   if (isLoading) {
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <Loader />
-      </ResponsiveContainer>
+      <Loader />
     )
   }
 
   return (
-    <ResponsiveContainer width="97%" height="97%" margin="1%" background="red">
+    <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width="100%"
           height="100%"
           data={data.sessions}
-        
-      >
+          >
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.4}/>
+            <stop offset="95%" stopColor="#FFFFFF" stopOpacity={1}/>
+          </linearGradient>
+        </defs>
         <CartesianGrid horizontal={false} vertical={false}/>
-        <XAxis dataKey="day" tick={CustomizedAxisTick} />
+        <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: 10, right: 10 }} axisLine={false} tickLine={ false }/>
         <YAxis hide="true"/>
-        <Tooltip content={<CustomizedToolTip />} />
-        <Legend align='left' verticalAlign='top' iconSize={0} />
-        <Line type="monotone" dot={false} activeDot={{ filter: "blur(1px)",  stroke:"white", r:6}} dataKey="sessionLength" stroke="white" fill="transparent" strokeWidth={2} unit="min"/>
+        <Tooltip wrapperStyle={{ backgroundColor: '#FFFFFF', padding: 8, fontSize: 8 }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeWidth:50, strokeHeight:"200%"}} />
+        <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:20, marginLeft:25, width: '60%', opacity:0.6, color: '#FFFFFF', padding: 8, fontSize:15}} content={CustomizedLegend}/>
+        <Line type="monotoneX" dot={false} activeDot={{ filter: "blur(1px)", stroke: "white", fill:"#FFFFFF", r: 6 }} dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} unit="min" />
         </LineChart>
       </ResponsiveContainer>
     );
