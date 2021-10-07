@@ -32,6 +32,7 @@ const SubTitle = styled.h2`
 font-size:18px;
 line-height: 24px;
 `
+
 const Components = styled.div`
 width:85%;
 height:611px;
@@ -44,15 +45,16 @@ bottom:68px;
 const ComponentsLeft = styled.div`
 width:835px;
 height:611px;
-background-color:#FBFBFB;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
 `
+
 const ComponentsTop = styled.div`
 width:100%;
 height:320px;
 `
+
 const ComponentsBottom = styled.div`
 width:100%;
 height:263px;
@@ -67,6 +69,7 @@ display:flex;
 flex-direction:column;
 justify-content:space-between;
 `
+
 const BarChart = styled.div`
 width:100%;
 height:100%;
@@ -76,27 +79,31 @@ display:flex;
 justify-content:center;
 align-items:center;
 `
-// start temp =====
+
 const LineChart = styled.div`
+margin:0;
 width:258px;
 height:263px;
 radius:5px;
-background-color:red;
+background-color:${colors.fontColorRed};
 display:flex;
 justify-content:center;
 align-items:center;
 `
 
 const RadarChart = styled.div`
+margin:0;
 width:258px;
 height:263px;
 radius:5px;
-background-color:${colors.cardBackground};
+background-color:#282D30;
 display:flex;
 justify-content:center;
 align-items:center;
 `
+
 const RadialBarChart = styled.div`
+margin:0;
 width:258px;
 height:263px;
 radius:5px;
@@ -105,7 +112,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 `
-// ===== end temp
 
 function Dashboard() {
   const { userId } = useParams()
@@ -150,7 +156,7 @@ return (
           <ComponentsBottom>
             <LineChart><LineChartComponent userId={userId}/></LineChart>
             <RadarChart><RadarChartComponent userId={userId}/></RadarChart>
-            <RadialBarChart><RadialBarChartComponent userId={userId}/></RadialBarChart>
+            <RadialBarChart><RadialBarChartComponent data={data}/></RadialBarChart>
           </ComponentsBottom>
         </ComponentsLeft>
         <ComponentsRight>

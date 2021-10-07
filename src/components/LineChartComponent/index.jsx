@@ -2,6 +2,7 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
+import colors from '../../utils/style/colors';
 
 const CustomizedAxisTick = ({ x, y, payload }) => {
   let text = ''
@@ -29,7 +30,7 @@ const CustomizedAxisTick = ({ x, y, payload }) => {
       text = ''
   }
   return (
-      <text orientation="bottom" width="240" height="30" type="category" x={x} y={y} stroke="none" fill="rgba(255, 255, 255, 0.6)" className="recharts-text recharts-cartesian-axis-tick-value" textAnchor="middle">
+      <text orientation="bottom" width={240} height={30} type="category" x={x} y={y} stroke="none" fill={`${colors.fontColorLight}`} opacity={0.6} className="recharts-text recharts-cartesian-axis-tick-value" textAnchor="middle">
         <tspan x={x} dy="0.71em">{text}</tspan>
       </text>
   )
@@ -76,17 +77,17 @@ function LineChartComponent({userId}) {
           data={data.sessions}
           >
         <defs>
-          <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.4}/>
-            <stop offset="95%" stopColor="#FFFFFF" stopOpacity={1}/>
+          <linearGradient id="colorLine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="5%" stopColor={`${colors.fontColorLight}`} stopOpacity={0.4}/>
+            <stop offset="95%" stopColor={`${colors.fontColorLight}`} stopOpacity={1}/>
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false}/>
         <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: 10, right: 10 }} axisLine={false} tickLine={ false }/>
         <YAxis hide="true"/>
         <Tooltip wrapperStyle={{ backgroundColor: '#FFFFFF', padding: 8, fontSize: 8 }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeWidth:50, strokeHeight:"200%"}} />
-        <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:20, marginLeft:25, width: '60%', opacity:0.6, color: '#FFFFFF', padding: 8, fontSize:15}} content={CustomizedLegend}/>
-        <Line type="monotoneX" dot={false} activeDot={{ filter: "blur(1px)", stroke: "white", fill:"#FFFFFF", r: 6 }} dataKey="sessionLength" stroke="url(#colorUv)" strokeWidth={2} unit="min" />
+        <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:29, marginLeft:34, width: '60%', opacity:0.6, color: `${colors.fontColorLight}`, fontSize:15}} content={CustomizedLegend}/>
+        <Line type="monotoneX" dot={false} activeDot={{ filter: "blur(1px)", stroke: `${colors.fontColorLight}`, fill:`${colors.fontColorLight}`, r: 6 }} dataKey="sessionLength" stroke="url(#colorLine)" strokeWidth={2} unit="min" />
         </LineChart>
       </ResponsiveContainer>
     );
