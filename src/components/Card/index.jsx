@@ -3,21 +3,22 @@ import CaloriesIcon from '../../assets/Icons/calories-icon.svg'
 import ProteinIcon from '../../assets/Icons/protein-icon.svg'
 import CarbsIcon from '../../assets/Icons/carbs-icon.svg'
 import FatIcon from '../../assets/Icons/fat-icon.svg'
+import colors from '../../utils/style/colors'
 
 
 const CardContainer = styled.div`
-width:258px;
-height:124px;
+width:100%;
+height:12vh;
 radius:5px;
 display:flex;
 justify-content:space-around;
 align-items:center;
-background-color:#F6F6F6;
+background-color:${colors.cardBackground};
 `
 
 const Icon = styled.img`
-width:60px;
-height:60px;
+width:3rem;
+height:3rem;
 `
 
 const Infos = styled.div`
@@ -30,17 +31,18 @@ align-items:flex-start;
 
 `
 const Value = styled.h3`
-font-size:20px;
+font-size:1rem;
 font-weight:700;
-color:#282D30;
-line-height:24px;
+color:${colors.fontColorDark};
+line-height:2.5vh;
 margin:0;
 `
 const SubTitle = styled.h4`
-font-size:14px;
+font-size:0.7rem;
 font-weight:500;
-color:grey;
-line-height:24px;
+color:${colors.fontColorDark};
+opacity:0.5;
+line-height:2.5vh;
 margin:0;
 `
 

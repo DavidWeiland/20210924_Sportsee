@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
     padding: 10px 15px;
     color: ${colors.fontColorLight};
     text-decoration: none;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight:500;
     text-align: center;
 `

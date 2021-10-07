@@ -4,47 +4,57 @@ import { Loader } from '../../utils/style/Atoms'
 import { useFetch } from '../../utils/hooks'
 import Card from '../../components/Card'
 import Error from '../../components/Error'
+import BarChartComponent from '../../components/BarChart'
 import LineChartComponent from '../../components/LineChartComponent'
 import RadarChartComponent from '../../components/RadarChartComponent'
 import RadialBarChartComponent from '../../components/RadialBarChartComponent'
 import { useParams } from 'react-router'
 
 const HomeStyle = styled.div`
-width:100%;
-height:933px;
-padding:68px;
-padding-left:109px;
+width:90%;
+height:90vh;
+padding-top:1%;
+padding-left:2%;
 position:relative;
 `
 
 const Title = styled.h1`
-font-size:48px;
-line-height: 24px;
+font-size:2rem;
+line-height: 2vh;
+color:${colors.fontColorDark}
 `
 
 const TitleFirstName = styled.span`
-font-size:48px;
+font-size:2rem;
 color: ${colors.fontColorRed};
-line-height: 24px;
+line-height: 2vh;
 `
 
 const SubTitle = styled.h2`
-font-size:18px;
-line-height: 24px;
+font-size:1rem;
+line-height: 2vh;
+color:${colors.fontColorDark}
 `
 
 const Components = styled.div`
-width:85%;
-height:611px;
+width:95%;
+height:65vh;
 display:flex;
 justify-content: space-between;
 position:absolute;
-bottom:68px;
+bottom:7vh;
 `
 
 const ComponentsLeft = styled.div`
-width:835px;
-height:611px;
+width:77%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+`
+const ComponentsRight = styled.div`
+width:22%;
+height:100%;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
@@ -52,28 +62,21 @@ justify-content:space-between;
 
 const ComponentsTop = styled.div`
 width:100%;
-height:320px;
+height:32vh;
 `
 
 const ComponentsBottom = styled.div`
 width:100%;
-height:263px;
+height:32vh;
 display:flex;
 justify-content:space-between;
 `
 
-const ComponentsRight = styled.div`
-width:258px;
-height:611px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-`
 
 const BarChart = styled.div`
 width:100%;
 height:100%;
-radius:5px;
+radius:0.2rem;
 background-color:${colors.cardBackground};
 display:flex;
 justify-content:center;
@@ -82,9 +85,9 @@ align-items:center;
 
 const LineChart = styled.div`
 margin:0;
-width:258px;
-height:263px;
-radius:5px;
+width:32.5%;
+height:100%;
+radius:0.2rem;
 background-color:${colors.fontColorRed};
 display:flex;
 justify-content:center;
@@ -93,10 +96,10 @@ align-items:center;
 
 const RadarChart = styled.div`
 margin:0;
-width:258px;
-height:263px;
-radius:5px;
-background-color:#282D30;
+width:32.5%;
+height:100%;
+radius:0.2rem;
+background-color:${colors.fontColorDark};
 display:flex;
 justify-content:center;
 align-items:center;
@@ -104,9 +107,9 @@ align-items:center;
 
 const RadialBarChart = styled.div`
 margin:0;
-width:258px;
-height:263px;
-radius:5px;
+width:32.5%;
+height:100%;
+radius:0.2rem;
 background-color:${colors.cardBackground};
 display:flex;
 justify-content:center;
@@ -151,7 +154,7 @@ return (
       <Components>
         <ComponentsLeft>
           <ComponentsTop>
-            <BarChart>BarChart ici</BarChart>
+          <BarChart><BarChartComponent userId={userId}/></BarChart>
           </ComponentsTop>
           <ComponentsBottom>
             <LineChart><LineChartComponent userId={userId}/></LineChart>

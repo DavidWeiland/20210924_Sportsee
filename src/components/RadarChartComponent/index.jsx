@@ -52,8 +52,8 @@ function RadarChartComponent({userId}) {
         text = ''
     }
     return (
-        <text orientation="bottom" width={140} height={20} type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} className="recharts-text recharts-cartesian-axis-tick-value" textAnchor={textAnchor}>
-          <tspan x={textX} dy="0.71em" fontSize={12}>{text}</tspan>
+        <text orientation="bottom" type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} textAnchor={textAnchor}>
+          <tspan x={textX} dy="0.71em" fontSize="0.7rem">{text}</tspan>
         </text>
     )
   }
@@ -71,7 +71,7 @@ function RadarChartComponent({userId}) {
   }
 
   return (
-    <ResponsiveContainer width="90%" height="100%" padding={10}>
+    <ResponsiveContainer width="100%" height="100%" padding={10}>
       <RadarChart width="100%" height="100%" data={RadarData} padding={0}>
         <PolarGrid />
         <PolarAngleAxis dataKey="kind" tick={CustomizedAxisTick} tickLine={ false}/>

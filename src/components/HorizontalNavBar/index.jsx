@@ -5,13 +5,13 @@ import Logo from '../../assets/images/logo.png'
 import colors from "../../utils/style/colors.js"
 
 const HomeLogo = styled.img`
-  height:57px;
+  height:8vh;
 `
 
 const NavContainer = styled.nav`
   width : 100%;
-  height:91px;
-  padding: 30px;
+  height:10vh;
+  padding: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;

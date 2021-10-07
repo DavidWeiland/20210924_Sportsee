@@ -12,7 +12,7 @@ const Icon = styled.img`
 
 const NavContainer = styled.nav`
   width: 8%;
-  height: 933px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,8 +22,8 @@ const NavContainer = styled.nav`
 `
 
 const StyledLinkIcon = styled.div`
-  width:64px;
-  height:316px;
+  width:60%;
+  height:35vh;
   background-color:transparent;
   display:flex;
   flex-direction:column;
@@ -31,15 +31,15 @@ const StyledLinkIcon = styled.div`
 `
 
 const CopyRight = styled.span`
-width:150px;
+width:8.5rem;
 background-color:transparent;
 font-weight: 500;
-font-size: 12px;
-line-height: 24px;
+font-size: 0.6rem;
+line-height: 2vh;
 color: ${colors.fontColorLight};
 transform: rotate(-90deg);
 position:absolute;
-bottom:109px;
+bottom:10vh;
 `
 
 function VerticalNavBar() {

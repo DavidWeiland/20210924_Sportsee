@@ -1,8 +1,8 @@
 const colors = {
   background: '#FFFFFF',
-  cardBackground: '#F6F6F6',
+  cardBackground: '#FBFBFB',
   navBackground: '#000000',
-  fontColorDark: '#000000',
+  fontColorDark: '#282D30',
   fontColorLight: '#FFFFFF',
   fontColorRed:'#FF0000',
 }

@@ -18,9 +18,9 @@ function RadialBarChartComponent({ data }) {
         <div>
             <span>Score</span>
         </div>
-        <div style={{ textAlign:"center", width:"30%", position:'absolute', top:65, left:55 }}>
-          <span style={{fontSize:26, fontWeight:700 }}>{data.todayScore * 100}%</span><br/>
-          <span style={{fontSize:16, fontWeight:500, opacity:0.5 }}>de votre objectif</span>
+        <div style={{ textAlign:"center", width:"30%", position:'absolute', top:"9vh", left:"20%" }}>
+          <span style={{fontSize:"1.2rem", fontWeight:700 }}>{data.todayScore * 100}%</span><br/>
+          <span style={{fontSize:"0.9rem", fontWeight:500, opacity:0.5 }}>de votre objectif</span>
         </div>
       </div>
     )

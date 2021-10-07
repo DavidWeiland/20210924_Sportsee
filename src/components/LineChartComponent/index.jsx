@@ -30,7 +30,7 @@ const CustomizedAxisTick = ({ x, y, payload }) => {
       text = ''
   }
   return (
-      <text orientation="bottom" width={240} height={30} type="category" x={x} y={y} stroke="none" fill={`${colors.fontColorLight}`} opacity={0.6} className="recharts-text recharts-cartesian-axis-tick-value" textAnchor="middle">
+      <text orientation="bottom" width={240} height={30} type="category" x={x} y={y} stroke="none" fill={`${colors.fontColorLight}`} opacity={0.6} textAnchor="middle">
         <tspan x={x} dy="0.71em">{text}</tspan>
       </text>
   )
@@ -39,7 +39,7 @@ const CustomizedAxisTick = ({ x, y, payload }) => {
 const CustomizedToolTip = ({ active, payload }) => {
   if (active) {
     return (
-      <div className="custom-tootip">
+      <div>
           <span>{`${payload[0].value} min`}</span>
       </div>
     )
@@ -83,10 +83,10 @@ function LineChartComponent({userId}) {
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false}/>
-        <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: 10, right: 10 }} axisLine={false} tickLine={ false }/>
+        <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: 10, right: 10 }} axisLine={false} tickLine={false} name='Durée moyenne des sessions' />
         <YAxis hide="true"/>
-        <Tooltip wrapperStyle={{ backgroundColor: '#FFFFFF', padding: 8, fontSize: 8 }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeWidth:50, strokeHeight:"200%"}} />
-        <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:29, marginLeft:34, width: '60%', opacity:0.6, color: `${colors.fontColorLight}`, fontSize:15}} content={CustomizedLegend}/>
+        <Tooltip wrapperStyle={{ backgroundColor: `${colors.background}`, padding: 8, fontSize: 8 }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeWidth:50, strokeHeight:"200%"}} />
+        <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:"1em", marginLeft:"1.2em", width: '60%', opacity:0.6, color: `${colors.fontColorLight}`, fontSize:15}} content={CustomizedLegend}/>
         <Line type="monotoneX" dot={false} activeDot={{ filter: "blur(1px)", stroke: `${colors.fontColorLight}`, fill:`${colors.fontColorLight}`, r: 6 }} dataKey="sessionLength" stroke="url(#colorLine)" strokeWidth={2} unit="min" />
         </LineChart>
       </ResponsiveContainer>

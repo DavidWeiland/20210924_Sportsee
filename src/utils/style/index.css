@@ -8,9 +8,8 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 1440px;
-  min-width: 1024px;
-  max-height: 1024px;
-  min-height: 780px;
+  min-width: 1025px;
+  height: 100vh;
 }
 
 code{
@@ -22,4 +21,12 @@ code{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+}
+
+@media screen and (width:1024px){
+  body{
+    width: 1024px;
+    height: 780px;
+  }
 }
