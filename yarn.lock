@@ -3119,7 +3119,7 @@
     "nanocolors" "^0.2.12"
     "node-releases" "^1.1.76"
 
-"browserslist@4.14.2":
+"browserslist@^4.14.2":
   "integrity" "sha512-HI4lPveGKUR0x2StIz+2FXfDk9SfVMrxn6PLh1JeGUwcuoDkdKZebWiyLRJ68iIPDpMI4JLVDf7S7XzslgWOhw=="
   "resolved" "https://registry.npmjs.org/browserslist/-/browserslist-4.14.2.tgz"
   "version" "4.14.2"
@@ -3235,7 +3235,7 @@
     "get-value" "^2.0.6"
     "has-value" "^1.0.0"
     "isobject" "^3.0.1"
-    "set-value" "^2.0.0"
+    "set-value" "^4.0.1"
     "to-object-path" "^0.3.0"
     "union-value" "^1.0.0"
     "unset-value" "^1.0.0"
@@ -3427,7 +3427,7 @@
   dependencies:
     "anymatch" "~3.1.2"
     "braces" "~3.0.2"
-    "glob-parent" "~5.1.2"
+    "glob-parent" "^5.1.2"
     "is-binary-path" "~2.1.0"
     "is-glob" "~4.0.1"
     "normalize-path" "~3.0.0"
@@ -9586,7 +9586,7 @@
   dependencies:
     "@babel/code-frame" "7.10.4"
     "address" "1.1.2"
-    "browserslist" "4.14.2"
+    "browserslist" "^4.14.2"
     "chalk" "2.4.2"
     "cross-spawn" "7.0.3"
     "detect-port-alt" "1.1.6"
@@ -10482,10 +10482,10 @@
   "resolved" "https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz"
   "version" "2.0.0"
 
-"set-value@^2.0.0", "set-value@^2.0.1":
+"set-value@^4.0.1":
   "integrity" "sha512-JxHc1weCN68wRY0fhCoXpyK55m/XPHafOmK4UWD7m2CI14GMcFypt4w/0+NV5f/ZMby2F6S2wwA7fgynh9gWSw=="
-  "resolved" "https://registry.npmjs.org/set-value/-/set-value-2.0.1.tgz"
-  "version" "2.0.1"
+  "resolved" "https://registry.npmjs.org/set-value/-/set-value-4.0.1.tgz"
+  "version" "4.0.1"
   dependencies:
     "extend-shallow" "^2.0.1"
     "is-extendable" "^0.1.1"
@@ -11511,7 +11511,7 @@
     "arr-union" "^3.1.0"
     "get-value" "^2.0.6"
     "is-extendable" "^0.1.1"
-    "set-value" "^2.0.1"
+    "set-value" "^4.0.1"
 
 "uniq@^1.0.1":
   "integrity" "sha1-sxxa6CVIRKOoKBVBzisEuGWnNP8="
