@@ -22,19 +22,19 @@ function HorizontalNavBar() {
   return (
     <NavContainer>
       <Link to="/">
-        <HomeLogo src={Logo} alt="logo SportSee"/>
+        <HomeLogo src={Logo} alt="logo SportSee" />
       </Link>
       <StyledLink to="/">
-        Accueil
+        {`Accueil`}
       </StyledLink>
       <StyledLink to="/">
-        Profil
+        {`Profil`}
       </StyledLink>
       <StyledLink to="/">
-        Réglage
+        {`Réglage`}
       </StyledLink>
       <StyledLink to="/">
-        Communauté
+        {`Communauté`}
       </StyledLink>
     </NavContainer>
   )

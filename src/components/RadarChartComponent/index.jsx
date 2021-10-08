@@ -5,10 +5,23 @@ import colors from '../../utils/style/colors';
 
 
 
-function RadarChartComponent({userId}) {
+function RadarChartComponent({ userId }) {
+  
   const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/performance`)
   const RadarData = data.data
   
+  if (error) {
+    return (
+      <Loader/>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <Loader/>
+    )
+  }
+
   const CustomizedAxisTick = ({ x, y, payload }) => {
     let text, textAnchor, textX, textY= ''
     switch (payload.value) {
@@ -52,33 +65,45 @@ function RadarChartComponent({userId}) {
         text = ''
     }
     return (
-        <text orientation="bottom" type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} textAnchor={textAnchor}>
-          <tspan x={textX} dy="0.71em" fontSize="0.7rem">{text}</tspan>
-        </text>
+      <text orientation="bottom" type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} textAnchor={textAnchor}>
+        <tspan x={textX} dy="0.71em" fontSize="0.7rem">
+          {text}
+        </tspan>
+      </text>
     )
   }
   
-  if (error) {
-    return (
-      <Loader/>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <Loader/>
-    )
-  }
-
   return (
-    <ResponsiveContainer width="100%" height="100%" padding={10}>
-      <RadarChart width="100%" height="100%" data={RadarData} padding={0}>
+    <ResponsiveContainer
+      width="100%"
+      height="100%"
+      padding={10}
+    >
+      <RadarChart
+        width="100%"
+        height="100%"
+        data={RadarData}
+        padding={0}
+      >
         <PolarGrid />
-        <PolarAngleAxis dataKey="kind" tick={CustomizedAxisTick} tickLine={ false}/>
-        <PolarRadiusAxis tick={false} axisLine={false} domain={[0,'auto']}/>
-              <Radar dataKey="value" stroke={`${colors.fontColorRed}`} fill={`${colors.fontColorRed}`} fillOpacity={0.6} />
-          </RadarChart>
-      </ResponsiveContainer>
+        <PolarAngleAxis
+          dataKey="kind"
+          tick={CustomizedAxisTick}
+          tickLine={false}
+        />
+        <PolarRadiusAxis
+          tick={false}
+          axisLine={false}
+          domain={[0, 'auto']}
+        />
+        <Radar
+          dataKey="value"
+          stroke={`${colors.fontColorRed}`}
+          fill={`${colors.fontColorRed}`}
+          fillOpacity={0.6}
+        />
+      </RadarChart>
+    </ResponsiveContainer>
   );
 }
 

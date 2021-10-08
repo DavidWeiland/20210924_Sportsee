@@ -31,15 +31,15 @@ const StyledLinkIcon = styled.div`
 `
 
 const CopyRight = styled.span`
-width:8.5rem;
-background-color:transparent;
-font-weight: 500;
-font-size: 0.6rem;
-line-height: 2vh;
-color: ${colors.fontColorLight};
-transform: rotate(-90deg);
-position:absolute;
-bottom:10vh;
+  width:8.5rem;
+  background-color:transparent;
+  font-weight: 500;
+  font-size: 0.6rem;
+  line-height: 2vh;
+  color: ${colors.fontColorLight};
+  transform: rotate(-90deg);
+  position:absolute;
+  bottom:10vh;
 `
 
 function VerticalNavBar() {
@@ -47,20 +47,20 @@ function VerticalNavBar() {
     <NavContainer>
       <StyledLinkIcon>
         <Link to="/">
-          <Icon src={Yoga} alt="yoga-icon"/>
+          <Icon src={Yoga} alt="yoga-icon" />
         </Link>
         <Link to="/">
-          <Icon src={Swim} alt="swim-icon"/>
+          <Icon src={Swim} alt="swim-icon" />
         </Link>
         <Link to="/">
-          <Icon src={Bike} alt="bike-icon"/>
+          <Icon src={Bike} alt="bike-icon" />
         </Link>
         <Link to="/">
-          <Icon src={Force} alt="force-icon"/>
+          <Icon src={Force} alt="force-icon" />
         </Link>
       </StyledLinkIcon>
       <CopyRight>
-        Copyright, SportSee 2020
+        {`Copyright, SportSee 2020`}
       </CopyRight>
     </NavContainer>
   )
