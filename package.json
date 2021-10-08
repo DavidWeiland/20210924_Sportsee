@@ -37,5 +37,8 @@
       "last 4 firefox version",
       "last 4 safari version"
     ]
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.7"
   }
 }
