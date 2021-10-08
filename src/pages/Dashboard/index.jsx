@@ -137,7 +137,6 @@ function Dashboard() {
   let cle = []
   for (let key in keyData) {
     cle.push(key)
-    cle.push(keyData[key])
   }
 
   if (error) {
@@ -196,19 +195,19 @@ return (
         <ComponentsRight>
           <Card
             index={cle[0]}
-            value={cle[1]}
+            value={keyData[cle[0]]}
+          />
+          <Card
+            index={cle[1]}
+            value={keyData[cle[1]]}
           />
           <Card
             index={cle[2]}
-            value={cle[3]}
+            value={keyData[cle[2]]}
           />
           <Card
-            index={cle[4]}
-            value={cle[5]}
-          />
-          <Card
-            index={cle[6]}
-            value={cle[7]}
+            index={cle[3]}
+            value={keyData[cle[3]]}
           />
         </ComponentsRight>
       </Components>
