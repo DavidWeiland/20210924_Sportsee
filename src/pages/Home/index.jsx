@@ -4,8 +4,9 @@ import UserIcon from '../../assets/Icons/user-circle.svg'
 import { StyledLink } from '../../utils/style/Atoms'
 
 const Container = styled.div`
-  width: 90%;
-  height: 90vh;
+  width: 50%;
+  height: 50vh;
+  margin:auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,18 +14,18 @@ const Container = styled.div`
 `
 const LinkWrapper = styled.div`
   margin:auto;
-  width:80%;
+  max-width:80%;
   display:flex;
   flex-direction: column;
   align-items:center;
   padding:20px;
 `
 const Icon = styled.img`
-  width:80%;
+  width:50%;
 `
 const Title = styled.h1`
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 1.2rem;
   line-height: 2vh;
   color: ${colors.fontColorDark};
   opacity:0.7;
