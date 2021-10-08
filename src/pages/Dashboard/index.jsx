@@ -116,7 +116,18 @@ const RadialBarChart = styled.div`
   align-items:center;
 `
 
+/**
+ * Represents a Dashboard in Page. Using function.
+ * @return { ReactElement }
+ */
 function Dashboard() {
+  
+  /**
+   * Fetch data
+   * @param { Integer } userId recovered from the path
+   * @param { string } url
+   * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
+   */
   const { userId } = useParams()
   const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}`)
 
@@ -176,7 +187,7 @@ return (
           </RadarChart>
           <RadialBarChart>
             <RadialBarChartComponent
-              data={data}
+              score={data.todayScore}
             />
           </RadialBarChart>
           </ComponentsBottom>

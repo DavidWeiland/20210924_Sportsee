@@ -46,6 +46,12 @@ const SubTitle = styled.h4`
   margin:0;
 `
 
+/** 
+ * Represents a Card in ReactComponent. Using function.
+ * @param { String } index recovered from props
+ * @param { Number } value recovered from props
+ * @return { ReactElement }
+ */
 function Card({ index, value }) {
   let icon, valUnit, subTitle
   

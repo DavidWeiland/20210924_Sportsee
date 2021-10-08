@@ -31,12 +31,17 @@ const Title = styled.h1`
   opacity:0.7;
 `
 
+/**
+ * Represents a Home in Page. Using function.
+ * @return { ReactElement }
+ * each link return userId in the path
+ */
 function Home() {
   return (
     <Container>
         <StyledLink to="/dashboard/12">
           <LinkWrapper>
-            <Icon src={UserIcon} alt="force-icon" />
+            <Icon src={UserIcon} alt="user-icon" />
             <Title>
               {`Karl Dovineau`}
             </Title>
@@ -44,7 +49,7 @@ function Home() {
         </StyledLink>
         <StyledLink to="/dashboard/18">
           <LinkWrapper>
-            <Icon src={UserIcon} alt="force-icon" />
+            <Icon src={UserIcon} alt="user-icon" />
             <Title>
               {`Cécilia Ratorez`}
             </Title>

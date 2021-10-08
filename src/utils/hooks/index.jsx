@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * Represents a hook. Using function.
+ * @param { String } url
+ * @return { (Object(data), Boolean(error), Boolean(isLoading)) }
+ */
 export function useFetch(url) {
   const [data, setData] = useState({})
   const [isLoading, setLoading] = useState(true)

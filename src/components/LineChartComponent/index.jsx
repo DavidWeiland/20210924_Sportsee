@@ -4,11 +4,27 @@ import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
 import colors from '../../utils/style/colors';
 
-function LineChartComponent({userId}) {
+/**
+ * Represents a LineChart in ReactComponent. Using function.
+ * @param { Integer } userId
+ * @return { ReactElement }
+ */
+function LineChartComponent({ userId }) {
+  
+  /**
+   * Fetch data
+   * @param { Integer } userId recovered from props
+   * @param { String } url with userId
+   * @param { Function(url) } useFetch
+   * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
+   */
   const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/average-sessions`)
   if (error) {
     return (
-      <Loader />
+      <div width="100%" height="100%" style={{ textAlign:"center", color: `${colors.fontColorLight}` }}>
+        <h1 style={{fontSize: "3rem" }}>{`404`}</h1>
+        <span style={{ fontSize: "1rem" }}>{`La ressource demandée n'existe pas`}</span>
+      </div>
     )
   }
 
@@ -18,6 +34,10 @@ function LineChartComponent({userId}) {
     )
   }
 
+  /**
+   * add a first key/value pair to start the graph outside the box
+   * add a last key/value pair to finish the graph outside the box
+   */
   data.sessions.splice(0, 0, { day: 0, sessionLength: data.sessions[0].sessionLength })
   data.sessions.push({ day: 0, sessionLength: data.sessions[data.sessions.length-1].sessionLength })
   
