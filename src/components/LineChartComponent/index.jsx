@@ -40,7 +40,7 @@ const CustomizedToolTip = ({ active, payload }) => {
   if (active) {
     return (
       <div>
-          <span>{`${payload[0].value} min`}</span>
+          <span>{`${payload[0].value} ${payload[0].unit}`}</span>
       </div>
     )
   }
@@ -69,6 +69,9 @@ function LineChartComponent({userId}) {
     )
   }
 
+  data.sessions.splice(0, 0, { day: 0, sessionLength: data.sessions[0].sessionLength })
+  data.sessions.push({ day: 0, sessionLength: data.sessions[data.sessions.length-1].sessionLength })
+  
   return (
     <ResponsiveContainer width="100%" height="100%">
         <LineChart
@@ -83,11 +86,11 @@ function LineChartComponent({userId}) {
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} vertical={false}/>
-        <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: 10, right: 10 }} axisLine={false} tickLine={false} name='Durée moyenne des sessions' />
+        <XAxis dataKey="day" tick={CustomizedAxisTick} padding={{ left: -45, right: -45 }} axisLine={false} tickLine={false} name='Durée moyenne des sessions' />
         <YAxis hide="true"/>
         <Tooltip wrapperStyle={{ backgroundColor: `${colors.background}`, padding: 8, fontSize: 8 }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeWidth:50, strokeHeight:"200%"}} />
         <Legend align='left' verticalAlign='top' iconSize={0} wrapperStyle={{  marginTop:"1em", marginLeft:"1.2em", width: '60%', opacity:0.6, color: `${colors.fontColorLight}`, fontSize:15}} content={CustomizedLegend}/>
-        <Line type="monotoneX" dot={false} activeDot={{ filter: "blur(1px)", stroke: `${colors.fontColorLight}`, fill:`${colors.fontColorLight}`, r: 6 }} dataKey="sessionLength" stroke="url(#colorLine)" strokeWidth={2} unit="min" />
+        <Line type="monotone" dot={false} activeDot={{stroke:`${colors.fontColorLight}`, strokeWidth:10, strokeOpacity:0.2, fill:`${colors.fontColorLight}`, r: 4 }} dataKey="sessionLength" stroke="url(#colorLine)" strokeWidth={2} unit="min" />
         </LineChart>
       </ResponsiveContainer>
     );

@@ -67,8 +67,8 @@ function BarChartComponent({userId}) {
         <YAxis yAxisId="barYAxisCal" dataKey="calories" tickCount={3} domain={[0, 'dataMax']} hide={true} />
         <Tooltip wrapperStyle={{ backgroundColor:`${colors.fontColorRed}`, padding: 8, fontSize: "0.5rem" }} content={CustomizedToolTip} cursor={{stroke:"rgba(0, 0, 0, 0.1)", strokeHeight:"200%"}} />
         <Legend align='center' verticalAlign='top' iconSize={0} content={CustomizedLegend} wrapperStyle={{marginTop:-15, width: '95%', opacity:1, color: `${colors.fontColorDark}`, fontSize:"O.7rem"}} />
-        <Bar dataKey="kilogram" yAxisId="barYAxisKg" fill={`${colors.fontColorDark}`} barSize={7} unit="kg" legendType='circle' name="Poids (kg)" />
-        <Bar dataKey="calories" yAxisId="barYAxisCal" fill={`${colors.fontColorRed}`} barSize={7} unit="kCal" legendType='circle' name="Calories brûlées (kCal)"/>
+        <Bar dataKey="kilogram" yAxisId="barYAxisKg" fill={`${colors.fontColorDark}`} barSize={7} unit="kg" legendType='circle' name="Poids (kg)" radius={[10, 10, 0, 0]}/>
+        <Bar dataKey="calories" yAxisId="barYAxisCal" fill={`${colors.fontColorRed}`} barSize={7} unit="kCal" legendType='circle' name="Calories brûlées (kCal)" radius={[10, 10, 0, 0]}/>
         </BarChart>
       </ResponsiveContainer>
     );
