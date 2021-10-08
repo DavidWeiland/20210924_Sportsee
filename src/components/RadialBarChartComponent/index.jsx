@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 import colors from '../../utils/style/colors';
 
@@ -82,6 +83,14 @@ function RadialBarChartComponent({ score }) {
       </RadialBarChart>
     </ResponsiveContainer>
   );
+}
+
+RadialBarChartComponent.propTypes = {
+  score: PropTypes.number.isRequired
+}
+
+RadialBarChartComponent.defaultProps = {
+  score: ''
 }
 
 export default RadialBarChartComponent

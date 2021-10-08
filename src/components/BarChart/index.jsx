@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
@@ -158,6 +159,14 @@ function BarChartComponent({ userId }) {
       </BarChart>
     </ResponsiveContainer>
   );
+}
+
+BarChartComponent.propTypes = {
+  userId: PropTypes.string.isRequired
+}
+
+BarChartComponent.defaultProps = {
+  userId: ''
 }
 
 export default BarChartComponent

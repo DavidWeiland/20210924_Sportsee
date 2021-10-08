@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import CaloriesIcon from '../../assets/Icons/calories-icon.svg'
 import ProteinIcon from '../../assets/Icons/protein-icon.svg'
@@ -90,6 +91,16 @@ function Card({ index, value }) {
       </Infos>
     </CardContainer>
   )  
+}
+
+Card.propTypes = {
+  index: PropTypes.string.isRequired,
+  value: PropTypes.number
+}
+
+Card.defaultProps = {
+  index: '',
+  value: ''
 }
 
 export default Card

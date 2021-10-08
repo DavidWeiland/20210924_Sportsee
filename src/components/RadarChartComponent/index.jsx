@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
@@ -12,7 +13,7 @@ function RadarChartComponent({ userId }) {
   
   /**
    * Fetch data
-   * @param { Integer } userId recovered from props
+   * @param { String } userId recovered from props
    * @param { String } url with userId
    * @param { Function(url) } useFetch
    * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
@@ -118,6 +119,14 @@ function RadarChartComponent({ userId }) {
       </RadarChart>
     </ResponsiveContainer>
   );
+}
+
+RadarChartComponent.propTypes = {
+  userId: PropTypes.string.isRequired
+}
+
+RadarChartComponent.defaultProps = {
+  userId: ''
 }
 
 export default RadarChartComponent

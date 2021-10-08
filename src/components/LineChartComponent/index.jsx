@@ -1,4 +1,4 @@
-
+import PropTypes from'prop-types'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
@@ -159,6 +159,14 @@ function LineChartComponent({ userId }) {
         </LineChart>
       </ResponsiveContainer>
     );
+}
+
+LineChartComponent.propTypes = {
+  userId: PropTypes.string.isRequired
+}
+
+LineChartComponent.defaultProps = {
+  userId: ''
 }
 
 export default LineChartComponent
