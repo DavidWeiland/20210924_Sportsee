@@ -5,14 +5,14 @@ import { StyledLink } from '../../utils/style/Atoms'
 
 const Container = styled.div`
   width: 90%;
-  height: 933px;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `
 const LinkWrapper = styled.div`
-  margin:60px;
+  margin:auto;
   width:80%;
   display:flex;
   flex-direction: column;
@@ -20,12 +20,12 @@ const LinkWrapper = styled.div`
   padding:20px;
 `
 const Icon = styled.img`
-  width:100%;
+  width:80%;
 `
 const Title = styled.h1`
   font-weight: 700;
-  font-size: 35px;
-  line-height: 24px;
+  font-size: 3rem;
+  line-height: 2vh;
   color: ${colors.fontColorDark};
   opacity:0.7;
 `
