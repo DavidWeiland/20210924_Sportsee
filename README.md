@@ -1,6 +1,24 @@
+![shields](https://img.shields.io/badge/version-v1.0-blue)
+![shields](https://img.shields.io/badge/make_with-React-red)
+![shields](https://img.shields.io/badge/make_with-Recharts-red)
+![shields](https://img.shields.io/badge/make_with-CRA_(create--react--app)-red)
+![shields](https://img.shields.io/badge/design-OpenClassroom-green)
+![shields](https://img.shields.io/badge/web_dev-David_Weiland-green)
+
 # SPORTSEE - APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+As part of the OpenClassroom training, in addition to the creation of a React app, this project aims to work on the use of complementary libraries for the creation of graphs (here using Recharts).
+
+A temporary deployment is available at this url *(need localy api running on port 5000)* : __[Sportsee-App](https://sportsee-david-weiland-12-24092021.vercel.app/)__.
+
+__Note__ : the application needs to connect to an api to work : [Sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*
+
+## Technologies
+
+- JavaScript (React, React-Router, Recharts)
+- CSS in React (styled-components)
+- CSS in JS
+- CSS
 
 ## Available Scripts
 
@@ -8,22 +26,26 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-__note : the application needs to connect to an api to work : [sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*__
-
+#### Running app in developpemtn mode
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test` (not yet implemented)
+#### Folders Structure
+le dossier src contient les éléments de développement de l’application : 
+- /assets : Images (logo) et Icons de l’application
+- /components : composants de l’application (graphs et menu)
+- /pages : Home(choix de l’utilisateur) ou Dashboard (reprend les composants) ou Error(404)
+- /utils : hooks, styles
+- index.jsx : ReactDom avec Router
 
-(Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.)
+### `yarn test`
+
+(not yet implemented)
 
 ### `yarn build`
-
-__note : the application needs to connect to an api to work : [sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*__
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -45,25 +67,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+__CRA :__ You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+__React :__ To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+__Recharts :__ You can learn more in the [Recharts documentation](https://recharts.org/en-US/api).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
 ### Deployment
 
