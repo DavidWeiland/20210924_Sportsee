@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './utils/style/index.css';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import HorizontalNavBar from './components/HorizontalNavBar'
-import VerticalNavBar from './components/VerticalNavBar'
-import Error from './components/Error'
+import HorizontalNavBar from './components/Menu/HorizontalNavBar'
+import VerticalNavBar from './components/Menu/VerticalNavBar'
+import Error from './pages/Error'
 
 
 ReactDOM.render(

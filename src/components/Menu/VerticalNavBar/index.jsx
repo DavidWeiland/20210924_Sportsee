@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
-import Yoga from '../../assets/Icons/yoga-icon.svg'
-import Swim from '../../assets/Icons/swim-icon.svg'
-import Bike from '../../assets/Icons/bike-icon.svg'
-import Force from '../../assets/Icons/force-icon.svg'
-import colors from "../../utils/style/colors.js"
+import Yoga from '../../../assets/Icons/yoga-icon.svg'
+import Swim from '../../../assets/Icons/swim-icon.svg'
+import Bike from '../../../assets/Icons/bike-icon.svg'
+import Force from '../../../assets/Icons/force-icon.svg'
+import colors from "../../../utils/style/colors.js"
 
 const Icon = styled.img`
   width:100%;
