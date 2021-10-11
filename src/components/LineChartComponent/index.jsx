@@ -129,7 +129,7 @@ function LineChartComponent({ userId }) {
         <XAxis
           dataKey="day"
           tick={CustomizedAxisTick}
-          padding={{ left: -45, right: -45 }}
+          padding={{ left: -40, right: -40 }}
           axisLine={false}
           tickLine={false}
           name='Durée moyenne des sessions' />
