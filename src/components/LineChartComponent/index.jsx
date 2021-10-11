@@ -33,13 +33,6 @@ function LineChartComponent({ userId }) {
       <Loader />
     )
   }
-
-  /**
-   * add a first key/value pair to start the graph outside the box
-   * add a last key/value pair to finish the graph outside the box
-   */
-  data.sessions.splice(0, 0, { day: 0, sessionLength: data.sessions[0].sessionLength })
-  data.sessions.push({ day: 0, sessionLength: data.sessions[data.sessions.length-1].sessionLength })
   
   const CustomizedAxisTick = ({ x, y, payload }) => {
     let text = ''
@@ -129,7 +122,7 @@ function LineChartComponent({ userId }) {
         <XAxis
           dataKey="day"
           tick={CustomizedAxisTick}
-          padding={{ left: -40, right: -40 }}
+          padding={{ left: 10, right: 10 }}
           axisLine={false}
           tickLine={false}
           name='Durée moyenne des sessions' />
