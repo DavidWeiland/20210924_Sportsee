@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
 import { StyledLink } from "../../../utils/style/Atoms.jsx"
-import Logo from '../../../assets/Images/logo.png'
+import Logo from '../../../assets/images/logo.png'
 import colors from "../../../utils/style/colors.js"
 
 const HomeLogo = styled.img`
