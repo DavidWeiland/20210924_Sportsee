@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/LineChartComponent/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/LineChartComponent/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from'prop-types'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useFetch } from '../../utils/hooks';
+import { Loader } from '../../utils/style/Atoms';
+import colors from '../../utils/style/colors';
+
+/**
+ * Represents a LineChart in ReactComponent. Using function.
+ * @param { String } userId recovered from props
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
+ */
+function LineChartComponent({ userId }) {
+  
+  const url = `${userId}/average-sessions`
+  /**
+   * Fetch data
+   * @function useFetch
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
+  */
+  const { data, error, isLoading } = useFetch(url)
+
+  if (error) {
+    return (
+      &lt;div width="100%" height="100%" style={{ textAlign:"center", color: `${colors.fontColorLight}` }}>
+        &lt;h1 style={{fontSize: "3rem" }}>{`404`}&lt;/h1>
+        &lt;span style={{ fontSize: "1rem" }}>{`La ressource demandée n'existe pas`}&lt;/span>
+      &lt;/div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      &lt;Loader />
+    )
+  }
+
+  /**
+   * New render of Ticks
+   * @param { Number } x horizontal position of tick
+   * @param { Number } y vertical position of tick
+   * @param { Object } payload informations of tick
+   * 
+   * @returns {ReactElement}
+   */
+  const CustomizedAxisTick = ({ x, y, payload }) => {
+    let text = ''
+    switch (payload.value) {
+      case 1:
+        text = 'L'
+        break
+      case 2 :
+      case 3:
+        text = 'M'
+        break
+      case 4:
+        text = 'J'
+        break
+      case 5:
+        text = 'V'
+        break
+      case 6:
+        text = 'S'
+        break
+      case 7:
+        text = 'D'
+        break
+      default:
+        text = ''
+    }
+    return (
+      &lt;text orientation="bottom" width={240} height={30} type="category" x={x} y={y} stroke="none" fill={`${colors.fontColorLight}`} opacity={0.6} textAnchor="middle">
+        &lt;tspan x={x} dy="0.71em">
+          {text}
+        &lt;/tspan>
+      &lt;/text>
+    )
+  }
+
+  /**
+   * New render of Tooltip
+   * @param { Boolean } active if tooltip is displayed
+   * @param { Object } payload informations of tooltip
+   * 
+   * @returns {ReactElement}
+   */
+  const CustomizedToolTip = ({ active, payload }) => {
+    if (active) {
+      return (
+        &lt;div>
+          &lt;span>
+            {`${payload[0].value} ${payload[0].unit}`}
+          &lt;/span>
+        &lt;/div>
+      )
+    }
+    return null
+  }
+
+  /**
+   * New render of Legend
+   * 
+   * @returns {ReactElement}
+   */
+  const CustomizedLegend = () => {
+    return (
+      &lt;div>
+        &lt;span>
+          {`Durée moyenne des sessions`}
+        &lt;/span>
+      &lt;/div>
+    )
+  }
+  
+  return (
+    &lt;ResponsiveContainer width="100%" height="100%">
+        &lt;LineChart
+          width="100%"
+          height="100%"
+          data={data.sessions}
+        >
+        &lt;defs>
+          &lt;linearGradient
+            id="colorLine"
+            x1="0" y1="0"
+            x2="1" y2="0"
+          >
+            &lt;stop
+              offset="5%"
+              stopColor={`${colors.fontColorLight}`}
+              stopOpacity={0.4}
+            />
+            &lt;stop
+              offset="95%"
+              stopColor={`${colors.fontColorLight}`}
+              stopOpacity={1}
+            />
+          &lt;/linearGradient>
+        &lt;/defs>
+        &lt;CartesianGrid
+          horizontal={false}
+          vertical={false} />
+        &lt;XAxis
+          dataKey="day"
+          tick={CustomizedAxisTick}
+          padding={{ left: 10, right: 10 }}
+          axisLine={false}
+          tickLine={false}
+          name='Durée moyenne des sessions' />
+        &lt;YAxis
+          hide="true"
+        />
+        &lt;Tooltip
+          wrapperStyle={{ backgroundColor: `${colors.background}`, padding: 8, fontSize: 8 }}
+          content={CustomizedToolTip}
+          cursor={{ stroke: "rgba(0, 0, 0, 0.1)", strokeWidth: 50, strokeHeight: "200%" }}
+        />
+        &lt;Legend
+          align='left'
+          verticalAlign='top'
+          iconSize={0}
+          wrapperStyle={{ marginTop: "1em", marginLeft: "1.2em", width: '60%', opacity: 0.6, color: `${colors.fontColorLight}`, fontSize: 15 }}
+          content={CustomizedLegend}
+        />
+        &lt;Line
+          type="monotone"
+          dot={false}
+          activeDot={{ stroke: `${colors.fontColorLight}`, strokeWidth: 10, strokeOpacity: 0.2, fill: `${colors.fontColorLight}`, r: 4 }}
+          dataKey="sessionLength"
+          stroke="url(#colorLine)"
+          strokeWidth={2} unit="min"
+        />
+        &lt;/LineChart>
+      &lt;/ResponsiveContainer>
+    );
+}
+
+LineChartComponent.propTypes = {
+  userId: PropTypes.string.isRequired
+}
+
+LineChartComponent.defaultProps = {
+  userId: ''
+}
+
+export default LineChartComponent</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BarChartComponent">BarChartComponent</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#datas">datas</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartComponent">LineChartComponent</a></li><li><a href="global.html#RadarChartComponent">RadarChartComponent</a></li><li><a href="global.html#RadialBarChartComponent">RadialBarChartComponent</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Oct 12 2021 11:33:10 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/RadarChartComponent/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/RadarChartComponent/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { useFetch } from '../../utils/hooks';
+import { Loader } from '../../utils/style/Atoms';
+import colors from '../../utils/style/colors';
+
+/** 
+ * Represents a RadarChart in ReactComponent. Using function.
+ * @param { String } userId recovered from props
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
+ */
+function RadarChartComponent({ userId }) {
+  
+  const url = `${userId}/performance`
+  /**
+   * Fetch data
+   * @function useFetch
+   * @param { String } userId
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
+  */
+  const { data, error, isLoading } = useFetch(url)
+  const RadarData = data.data
+  
+  if (error) {
+    return (
+      &lt;div width="100%" height="100%" style={{ textAlign:"center", color: `${colors.fontColorLight}` }}>
+        &lt;h1 style={{fontSize: "3rem" }}>{`404`}&lt;/h1>
+        &lt;span style={{ fontSize: "1rem" }}>{`La ressource demandée n'existe pas`}&lt;/span>
+      &lt;/div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      &lt;Loader/>
+    )
+  }
+
+  /**
+   * New render of Ticks
+   * @param { Number } x horizontal position of tick
+   * @param { Number } y vertical position of tick
+   * @param { Object } payload informations of tick
+   * 
+   * @returns {ReactElement}
+   */
+  const CustomizedAxisTick = ({ x, y, payload }) => {
+    let text, textAnchor, textX, textY= ''
+    switch (payload.value) {
+      case 1:
+        text = data.kind[1]
+        textAnchor = 'middle'
+        textX = x
+        textY = y-6
+        break
+      case 2:
+        text = data.kind[2]
+        textAnchor = 'start'
+        textX = x - 12
+        textY = y -15
+        break
+      case 3:
+        text = data.kind[3]
+        textAnchor = 'middle'
+        textX = x +3
+        textY = y+5
+        break
+      case 4:
+        text = data.kind[4]
+        textAnchor = 'middle'
+        textX = x
+        textY = y-5
+        break
+      case 5:
+        text = data.kind[5]
+        textAnchor = 'end'
+        textX = x + 11
+        textY = y+5
+        break
+      case 6:
+        text = data.kind[6]
+        textAnchor = 'end'
+        textX = x + 12
+        textY = y -15
+        break
+      default:
+        text = ''
+    }
+    return (
+      &lt;text orientation="bottom" type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} textAnchor={textAnchor}>
+        &lt;tspan x={textX} dy="0.71em" fontSize="0.7rem">
+          {text}
+        &lt;/tspan>
+      &lt;/text>
+    )
+  }
+  
+  return (
+    &lt;ResponsiveContainer
+      width="100%"
+      height="100%"
+      padding={10}
+    >
+      &lt;RadarChart
+        width="100%"
+        height="100%"
+        data={RadarData}
+        padding={0}
+      >
+        &lt;PolarGrid />
+        &lt;PolarAngleAxis
+          dataKey="kind"
+          tick={CustomizedAxisTick}
+          tickLine={false}
+        />
+        &lt;PolarRadiusAxis
+          tick={false}
+          axisLine={false}
+          domain={[0, 'auto']}
+        />
+        &lt;Radar
+          dataKey="value"
+          stroke={`${colors.fontColorRed}`}
+          fill={`${colors.fontColorRed}`}
+          fillOpacity={0.6}
+        />
+      &lt;/RadarChart>
+    &lt;/ResponsiveContainer>
+  );
+}
+
+RadarChartComponent.propTypes = {
+  userId: PropTypes.string.isRequired
+}
+
+RadarChartComponent.defaultProps = {
+  userId: ''
+}
+
+export default RadarChartComponent</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BarChartComponent">BarChartComponent</a></li><li><a href="global.html#Card">Card</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#datas">datas</a></li><li><a href="global.html#fetchData">fetchData</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartComponent">LineChartComponent</a></li><li><a href="global.html#RadarChartComponent">RadarChartComponent</a></li><li><a href="global.html#RadialBarChartComponent">RadialBarChartComponent</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Oct 12 2021 11:33:10 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
