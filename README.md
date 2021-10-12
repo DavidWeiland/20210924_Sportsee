@@ -26,20 +26,22 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-#### Running app in developpemtn mode
-Runs the app in the development mode.\
+#### Running app in development mode
+
+##### Runs the app in the development mode
 Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
-The page will reload if you make edits.\
+##### The page will reload if you make edits
 You will also see any lint errors in the console.
 
 #### Folders Structure
-le dossier src contient les éléments de développement de l’application : 
-- /assets : Images (logo) et Icons de l’application
-- /components : composants de l’application (graphs et menu)
-- /pages : Home(choix de l’utilisateur) ou Dashboard (reprend les composants) ou Error(404)
+
+The src folder contains the development elements of the application : 
+- /assets : Images (logo) and Icons of the application
+- /components : components of the application (graphs and menu)
+- /pages : Home(user's choice) or Dashboard (includes components) or Error(404)
 - /utils : hooks, styles
-- index.jsx : ReactDom avec Router
+- index.jsx : ReactDom with Router
 
 ### `yarn test`
 
@@ -47,10 +49,10 @@ le dossier src contient les éléments de développement de l’application :
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+##### Builds the app for production to the `build` folder
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+##### The build is minified and the filenames include the hashes
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
