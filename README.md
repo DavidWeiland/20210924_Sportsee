@@ -9,7 +9,7 @@
 
 As part of the OpenClassroom training, in addition to the creation of a React app, this project aims to work on the use of complementary libraries for the creation of graphs (here using Recharts).
 
-A temporary deployment is available at this url *(need localy api running on port 5000)* : __[Sportsee-App](https://sportsee-david-weiland-12-24092021.vercel.app/)__.
+A temporary deployment is available at this url *(need localy api running on port 5000)* : __[Sportsee-App](https://sportsee.vercel.app/)__.
 
 __Note__ : the application needs to connect to an api to work : [Sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*
 
