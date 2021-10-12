@@ -6,19 +6,25 @@ import colors from '../../utils/style/colors';
 
 /**
  * Represents a LineChart in ReactComponent. Using function.
- * @param { Integer } userId
- * @return { ReactElement }
+ * @param { String } userId recovered from props
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
  */
 function LineChartComponent({ userId }) {
   
+  const url = `${userId}/average-sessions`
   /**
    * Fetch data
-   * @param { Integer } userId recovered from props
-   * @param { String } url with userId
-   * @param { Function(url) } useFetch
-   * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
-   */
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/average-sessions`)
+   * @function useFetch
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
+  */
+  const { data, error, isLoading } = useFetch(url)
+
   if (error) {
     return (
       <div width="100%" height="100%" style={{ textAlign:"center", color: `${colors.fontColorLight}` }}>
@@ -33,7 +39,15 @@ function LineChartComponent({ userId }) {
       <Loader />
     )
   }
-  
+
+  /**
+   * New render of Ticks
+   * @param { Number } x horizontal position of tick
+   * @param { Number } y vertical position of tick
+   * @param { Object } payload informations of tick
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedAxisTick = ({ x, y, payload }) => {
     let text = ''
     switch (payload.value) {
@@ -68,6 +82,13 @@ function LineChartComponent({ userId }) {
     )
   }
 
+  /**
+   * New render of Tooltip
+   * @param { Boolean } active if tooltip is displayed
+   * @param { Object } payload informations of tooltip
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedToolTip = ({ active, payload }) => {
     if (active) {
       return (
@@ -81,6 +102,11 @@ function LineChartComponent({ userId }) {
     return null
   }
 
+  /**
+   * New render of Legend
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedLegend = () => {
     return (
       <div>

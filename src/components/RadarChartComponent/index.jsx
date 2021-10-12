@@ -6,19 +6,25 @@ import colors from '../../utils/style/colors';
 
 /** 
  * Represents a RadarChart in ReactComponent. Using function.
- * @param { Integer } userId
- * @return { ReactElement }
+ * @param { String } userId recovered from props
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
  */
 function RadarChartComponent({ userId }) {
   
+  const url = `${userId}/performance`
   /**
    * Fetch data
-   * @param { String } userId recovered from props
-   * @param { String } url with userId
-   * @param { Function(url) } useFetch
-   * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
-   */
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/performance`)
+   * @function useFetch
+   * @param { String } userId
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
+  */
+  const { data, error, isLoading } = useFetch(url)
   const RadarData = data.data
   
   if (error) {
@@ -36,6 +42,14 @@ function RadarChartComponent({ userId }) {
     )
   }
 
+  /**
+   * New render of Ticks
+   * @param { Number } x horizontal position of tick
+   * @param { Number } y vertical position of tick
+   * @param { Object } payload informations of tick
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedAxisTick = ({ x, y, payload }) => {
     let text, textAnchor, textX, textY= ''
     switch (payload.value) {

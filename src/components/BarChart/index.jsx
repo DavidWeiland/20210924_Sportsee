@@ -7,19 +7,24 @@ import colors from '../../utils/style/colors';
 
 /** 
  * Represents a BarChart in ReactComponent. Using function.
- * @param { Integer } userId
- * @return { ReactElement }
+ * @param { String } userId recovered from props
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
  */
 function BarChartComponent({ userId }) {
   
+  const url = `${userId}/activity`
   /**
    * Fetch data
-   * @param { Integer } userId recovered from props
-   * @param { String } url with userId
-   * @param { Function(url) } useFetch
-   * @return {( Object(data) | Boolean(error) | Boolean(isLoading) )}
+   * @function useFetch
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
    */
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}/activity`)
+  const { data, error, isLoading } = useFetch(url)
   
   if (error) {
     return (
@@ -29,13 +34,21 @@ function BarChartComponent({ userId }) {
       </div>
     )
   }
-    
+
   if (isLoading) {
     return (
       <Loader />
     )
   }
-  
+
+  /**
+   * New render of Ticks
+   * @param { Number } x horizontal position of tick
+   * @param { Number } y vertical position of tick
+   * @param { Object } payload informations of tick
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedAxisTick = ({ x, y, payload }) => {
     return (
       <text orientation="bottom" type="category" x={x} y={y+10} stroke="none" fill={`${colors.fontColorDark}`} opacity={0.7} textAnchor="middle">
@@ -45,7 +58,14 @@ function BarChartComponent({ userId }) {
       </text>
     )
   }
-      
+  
+  /**
+   * New render of Tooltip
+   * @param { Boolean } active if tooltip is displayed
+   * @param { Object } payload informations of tooltip
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedToolTip = ({ active, payload }) => {
     if (active) {
       return (
@@ -61,7 +81,13 @@ function BarChartComponent({ userId }) {
     }
     return null
   }
-      
+  
+  /**
+   * New render of Legend
+   * @param { Object } payload informations of Legend
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedLegend = ({ payload }) => {
     return (
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>

@@ -33,8 +33,8 @@ const Title = styled.h1`
 
 /**
  * Represents a Home in Page. Using function.
- * @return { ReactElement }
  * each link return userId in the path
+ * @returns { ReactElement }
  */
 function Home() {
   return (

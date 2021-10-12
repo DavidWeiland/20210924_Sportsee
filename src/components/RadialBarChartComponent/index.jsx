@@ -4,8 +4,9 @@ import colors from '../../utils/style/colors';
 
 /** 
  * Represents a RadialBarChart in ReactComponent. Using function.
- * @param { Number {0-1}} score
- * @return { ReactElement }
+ * @param { Number } score is a decimal 0 to 1
+ * 
+ * @returns { ReactElement }
  */
 function RadialBarChartComponent({ score }) {
 
@@ -22,6 +23,7 @@ function RadialBarChartComponent({ score }) {
    * datas[0] represents base 1
    * without base, score is the only reference. ex : 0.3/0.3 (id18) 0.12/0.12(id12) or 100/100
    * with base on 1, score become a reference on 1. ex : 0.12/1 (id12) or 12/100
+   * @constant { Array } datas
    */
   const datas = [
     {
@@ -32,7 +34,11 @@ function RadialBarChartComponent({ score }) {
       "todayScore": score,
     }
   ]
-  
+  /**
+   * New render of Legend
+   * 
+   * @returns {ReactElement}
+   */
   const CustomizedLegend = () => {
     return (
       <div>

@@ -118,22 +118,29 @@ const RadialBarChart = styled.div`
 
 /**
  * Represents a Dashboard in Page. Using function.
- * @return { ReactElement }
+ * @param { Function(url) } useFetch import from hook
+ * 
+ * @returns { ReactElement }
  */
 function Dashboard() {
   
+  const { userId } = useParams()
+  
+  const url = userId
   /**
    * Fetch data
-   * @param { Integer } userId recovered from the path
-   * @param { string } url
-   * @return {( Object(data), Boolean(error), Boolean(isLoading) )}
+   * @function useFetch
+   * @param { String } userId recovered from the path
+   * @param { String } url
+   * 
+   * @returns { Object } data
+   * @returns { Boolean } error
+   * @returns { Boolean } isLoading
    */
-  const { userId } = useParams()
-  const { data, error, isLoading } = useFetch(`http://localhost:5000/user/${userId}`)
+  const { data, error, isLoading } = useFetch(url)
 
   const userInfos = data.userInfos
   const keyData = data.keyData
-
   let cle = []
   for (let key in keyData) {
     cle.push(key)
