@@ -31,7 +31,7 @@ export function useFetch(url) {
          */
         async function fetchData() {
             try {    
-                const response = await fetch(`http://localhost:5000/user/${url}`)
+                const response = await fetch(`http://localhost:3000/user/${url}`)
                 const {data} = await response.json()
                 setData(data)
             } catch (error) {
