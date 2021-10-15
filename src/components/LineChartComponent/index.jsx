@@ -6,14 +6,15 @@ import colors from '../../utils/style/colors';
 
 /**
  * Represents a LineChart in ReactComponent. Using function.
+ * @param { String } path recovered from props
  * @param { String } userId recovered from props
  * @param { Function(url) } useFetch import from hook
  * 
  * @returns { ReactElement }
  */
-function LineChartComponent({ userId }) {
+function LineChartComponent({ path, userId }) {
   
-  const url = `${userId}/average-sessions`
+  const url = `${path}${userId}/average-sessions`
   /**
    * Fetch data
    * @function useFetch
@@ -118,7 +119,10 @@ function LineChartComponent({ userId }) {
   }
   
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer
+      width="100%"
+      height="100%"
+    >
         <LineChart
           width="100%"
           height="100%"
@@ -181,10 +185,12 @@ function LineChartComponent({ userId }) {
 }
 
 LineChartComponent.propTypes = {
+  path: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired
 }
 
 LineChartComponent.defaultProps = {
+  path: '',
   userId: ''
 }
 

@@ -6,18 +6,18 @@ import colors from '../../utils/style/colors';
 
 /** 
  * Represents a RadarChart in ReactComponent. Using function.
+ * @param { String } path recovered from props
  * @param { String } userId recovered from props
  * @param { Function(url) } useFetch import from hook
  * 
  * @returns { ReactElement }
  */
-function RadarChartComponent({ userId }) {
+function RadarChartComponent({ path, userId }) {
   
-  const url = `${userId}/performance`
+  const url = `${path}${userId}/performance`
   /**
    * Fetch data
    * @function useFetch
-   * @param { String } userId
    * @param { String } url
    * 
    * @returns { Object } data
@@ -136,10 +136,12 @@ function RadarChartComponent({ userId }) {
 }
 
 RadarChartComponent.propTypes = {
+  path: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired
 }
 
 RadarChartComponent.defaultProps = {
+  path:'',
   userId: ''
 }
 

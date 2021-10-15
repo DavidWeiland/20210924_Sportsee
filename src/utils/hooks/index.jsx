@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react'
  * @returns { Boolean } isLoading
  */
 export function useFetch(url) {
-
     const [data, setData] = useState({})
     const [isLoading, setLoading] = useState(true)
     const [error, setError] = useState(false)
@@ -19,7 +18,6 @@ export function useFetch(url) {
     useEffect(() => {
         if (!url) return
         setLoading(true)
-        
         /**
          * Download data from specified URL.
          * @async
@@ -31,7 +29,7 @@ export function useFetch(url) {
          */
         async function fetchData() {
             try {    
-                const response = await fetch(`http://localhost:3000/user/${url}`)
+                const response = await fetch(url)
                 const {data} = await response.json()
                 setData(data)
             } catch (error) {
@@ -43,6 +41,5 @@ export function useFetch(url) {
         }  
         fetchData()
     }, [url])
-    
     return { isLoading, data, error }
 }

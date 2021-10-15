@@ -9,6 +9,7 @@ import LineChartComponent from '../../components/LineChartComponent'
 import RadarChartComponent from '../../components/RadarChartComponent'
 import RadialBarChartComponent from '../../components/RadialBarChartComponent'
 import { useParams } from 'react-router'
+import { path } from '../../utils/Variables'
 
 const HomeStyle = styled.div`
   width:90%;
@@ -126,12 +127,13 @@ function Dashboard() {
   
   const { userId } = useParams()
   
-  const url = userId
+  const url = `${path}${userId}`
   /**
    * Fetch data
    * @function useFetch
-   * @param { String } userId recovered from the path
-   * @param { String } url
+   * @param { String } path import from Utils/Variables
+   * @param { String } userId recovered from useParams
+   * @param { String } url composed by path and userId
    * 
    * @returns { Object } data
    * @returns { Boolean } error
@@ -175,6 +177,7 @@ return (
           <ComponentsTop>
           <BarChart>
             <BarChartComponent
+              path = {path}
               userId={userId}
             />
           </BarChart>
@@ -183,11 +186,13 @@ return (
           <ComponentsBottom>
           <LineChart>
             <LineChartComponent
+              path = {path}
               userId={userId}
             />
           </LineChart>
           <RadarChart>
             <RadarChartComponent
+              path={path}
               userId={userId}
             />
           </RadarChart>

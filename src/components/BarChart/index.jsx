@@ -4,17 +4,17 @@ import { useFetch } from '../../utils/hooks';
 import { Loader } from '../../utils/style/Atoms';
 import colors from '../../utils/style/colors';
 
-
 /** 
  * Represents a BarChart in ReactComponent. Using function.
  * @param { String } userId recovered from props
+ * @param { String } path recovered from props
  * @param { Function(url) } useFetch import from hook
  * 
  * @returns { ReactElement }
  */
-function BarChartComponent({ userId }) {
+function BarChartComponent({ path, userId }) {
   
-  const url = `${userId}/activity`
+  const url = `${path}${userId}/activity`
   /**
    * Fetch data
    * @function useFetch
@@ -113,7 +113,10 @@ function BarChartComponent({ userId }) {
   }
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer
+      width="100%"
+      height="100%"
+    >
       <BarChart
         width="100%"
         height="100%"
@@ -188,10 +191,12 @@ function BarChartComponent({ userId }) {
 }
 
 BarChartComponent.propTypes = {
+  path: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired
 }
 
 BarChartComponent.defaultProps = {
+  path:'',
   userId: ''
 }
 
