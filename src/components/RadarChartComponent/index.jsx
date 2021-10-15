@@ -13,7 +13,6 @@ import colors from '../../utils/style/colors';
  * @returns { ReactElement }
  */
 function RadarChartComponent({ path, userId }) {
-  
   const url = `${path}${userId}/performance`
   /**
    * Fetch data
@@ -51,51 +50,44 @@ function RadarChartComponent({ path, userId }) {
    * @returns {ReactElement}
    */
   const CustomizedAxisTick = ({ x, y, payload }) => {
-    let text, textAnchor, textX, textY= ''
+    let textAnchor, textX, textY= ''
     switch (payload.value) {
       case 1:
-        text = data.kind[1]
         textAnchor = 'middle'
         textX = x
         textY = y-6
         break
       case 2:
-        text = data.kind[2]
         textAnchor = 'start'
         textX = x - 12
         textY = y -15
         break
       case 3:
-        text = data.kind[3]
         textAnchor = 'middle'
         textX = x +3
         textY = y+5
         break
       case 4:
-        text = data.kind[4]
         textAnchor = 'middle'
         textX = x
         textY = y-5
         break
       case 5:
-        text = data.kind[5]
         textAnchor = 'end'
         textX = x + 11
         textY = y+5
         break
       case 6:
-        text = data.kind[6]
         textAnchor = 'end'
         textX = x + 12
         textY = y -15
         break
       default:
-        text = ''
     }
     return (
       <text orientation="bottom" type="category" x={textX} y={textY} stroke="none" fill={`${colors.fontColorLight}`} textAnchor={textAnchor}>
         <tspan x={textX} dy="0.71em" fontSize="0.7rem">
-          {text}
+          {data.kind[payload.value]}
         </tspan>
       </text>
     )
