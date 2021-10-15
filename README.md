@@ -11,7 +11,8 @@ As part of the OpenClassroom training, in addition to the creation of a React ap
 
 A temporary deployment is available at this url *(need localy api running on port 3000)* : __[Sportsee-App](https://sportsee.vercel.app/)__.
 
-__Note__ : the application needs to connect to an api to work : [Sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*
+__Note__ : The application needs to connect to an api to work : [Sportsee-API](https://github.com/DavidWeiland/sportsee-API) *(to make the api work, consult the README.md first)*.
+__Note__ : As soon as the final api is online, change the value of the path in Utils/Variables/index.js
 
 ## Technologies
 

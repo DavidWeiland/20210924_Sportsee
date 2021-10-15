@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: utils/hooks/index.jsx</title>
+    <title>JSDoc: Source: utils/Variables/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: utils/hooks/index.jsx</h1>
+    <h1 class="page-title">Source: utils/Variables/index.js</h1>
 
     
 
@@ -26,51 +26,12 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from 'react'
-
-/**
- * Represents a hook.
- * @function useFetch 
- * @param { String } url
- * @param { Function() } useEffect
- * 
- * @returns { Object } data
- * @returns { Boolean } error
- * @returns { Boolean } isLoading
+            <pre class="prettyprint source linenums"><code>/** As soon as the final api is online, change the value of firstPath
+ * @type { String}
  */
-export function useFetch(url) {
-    const [data, setData] = useState({})
-    const [isLoading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
+const firstPath = `http://localhost:3000/`
 
-    useEffect(() => {
-        if (!url) return
-        setLoading(true)
-        /**
-         * Download data from specified URL.
-         * @async
-         * @function fetchData
-         * 
-         * @returns { Object } data
-         * @returns { Boolean } error
-         * @returns { Boolean } isLoading
-         */
-        async function fetchData() {
-            try {    
-                const response = await fetch(url)
-                const {data} = await response.json()
-                setData(data)
-            } catch (error) {
-                console.log('===== error =====', error)
-                setError(true)
-            } finally {
-                setLoading(false)
-            }
-        }  
-        fetchData()
-    }, [url])
-    return { isLoading, data, error }
-}</code></pre>
+export const path = `${firstPath}user/`</code></pre>
         </article>
     </section>
 
